@@ -1,7 +1,7 @@
 <html lang="en">
  <head></head>
  <body>
-  <%@ page language=&quot;java&quot; import=&quot;java.util.*; contentType="text/html; charset=utf-8"; pageEncoding="utf-8">;    
+  <%@ page language="java"; import="java.util.*"; contentType="text/html; charset=utf-8"; pageEncoding="utf-8">;    
   <!-- META --> 
   <meta charset="utf-8" /> 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" /> 
