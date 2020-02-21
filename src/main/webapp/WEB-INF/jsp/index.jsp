@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%
+	String ctx = request.getContextPath();
+	request.setAttribute("path", ctx);
+%>
 <!DOCTYPE html>
 <html lang="en">
  <head></head>
@@ -16,6 +22,7 @@
   <!-- STYLESHEETS --> 
   <link rel="stylesheet" type="text/css" href="assets/css/plugins.css" /> 
   <link rel="stylesheet" type="text/css" href="assets/css/main.css" />   
+  <link rel="stylesheet" href="assets/css/image.css">
   <!-- PRELOADER --> 
   <div class="preloader"> 
    <div class="spinner"></div> 
@@ -54,230 +61,24 @@
     <!-- /INTRO --> 
     <!-- ABOUT --> 
     <section id="about"> 
-     <h3 class="headline scroll-animated">About Me</h3> 
-     <p class="scroll-animated">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis magna ac justo tincidunt, nec rhoncus leo rutrum. Duis mattis, neque id consectetur gravida, ligula massa consequat mi, id ultricies massa mauris eu augue. Donec dictum diam vitae dui iaculis, vitae laoreet sem molestie. Suspendisse hendrerit interdum euismod.</p> 
-     <p class="scroll-animated">In dui augue, pretium eget vulputate at, maximus eget augue. Vestibulum porttitor a nisl in rhoncus. Etiam libero est, pellentesque eleifend arcu at, congue gravida ex. Sed et nisl ultrices, mattis purus et, commodo quam. Etiam lacus est, faucibus ut mattis sed, mattis non enim. Maecenas elementum malesuada lorem, ut vestibulum erat iaculis non. Donec nec diam id dolor hendrerit sollicitudin.</p> 
-     <!-- CLIENTS --> 
-     <div class="row clients scroll-animated"> 
-      <div class="col-md-3 col-xs-6"> 
-       <img class="img-responsive" src="assets/img/clients/client-1.png" alt="client" /> 
-      </div> 
-      <div class="col-md-3 col-xs-6"> 
-       <img class="img-responsive" src="assets/img/clients/client-2.png" alt="client" /> 
-      </div> 
-      <div class="col-md-3 col-xs-6"> 
-       <img class="img-responsive" src="assets/img/clients/client-3.png" alt="client" /> 
-      </div> 
-      <div class="col-md-3 col-xs-6"> 
-       <img class="img-responsive" src="assets/img/clients/client-4.png" alt="client" /> 
-      </div> 
-     </div> 
+     <h3 class="headline scroll-animated">最新图片</h3> 
+     <div class="grid" id="grid">
+		<c:forEach items="${list}" var="image"
+			varStatus="ids">
+			  <photo-card img="${image.uploadpath }/${image.imageid}_${image.name}" link="${image.uploadpath }/${image.imageid}_${image.name}"></photo-card>
+		</c:forEach>
+<!--   <photo-card img="assets/img/jq22-1.png" link="#"></photo-card> -->
+<!--   <photo-card img="assets/img/jq22-2.png" link="#"></photo-card> -->
+<!--   <photo-card img="assets/img/jq22-3.png" link="#"></photo-card> -->
+<!--   <photo-card img="assets/img/jq22-4.png" link="#"></photo-card> -->
+<!--   <photo-card img="assets/img/jq22-4.png" link="#"></photo-card> -->
+<!--   <photo-card img="assets/img/jq22-3.png" link="#"></photo-card> -->
+<!--   <photo-card img="assets/img/jq22-2.png" link="#"></photo-card> -->
+<!--   <photo-card img="assets/img/jq22-1.png" link="#"></photo-card> -->
+</div>
      <!-- /CLIENTS --> 
     </section> 
     <!-- /ABOUT --> 
-    <div class="tlinks">
-      Collect from 
-     <a href="http://www.cssmoban.com/">建站模板</a> 
-    </div> 
-    <!-- SERVICE --> 
-    <section id="service"> 
-     <h3 class="headline scroll-animated">Services</h3> 
-     <!-- SERVICE LIST --> 
-     <ul class="services-list"> 
-      <!-- SERVICE ITEM --> 
-      <li class="service-item scroll-animated"> <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-1" aria-expanded="false">Webdesign</button> 
-       <!-- COLLAPSE CONTENT --> 
-       <div class="collapse" id="collapse-item-1"> 
-        <!-- COLLAPSE CONTENT INNER --> 
-        <div class="well"> 
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis magna ac justo tincidunt, nec rhoncus leo rutrum. Duis mattis, neque id consectetur gravida, ligula massa consequat mi, id ultricies massa mauris eu augue. Donec dictum diam vitae dui iaculis, vitae laoreet sem molestie.</p> 
-        </div> 
-        <!-- /COLLAPSE CONTENT INNER --> 
-       </div> 
-       <!-- /COLLAPSE CONTENT --> </li> 
-      <!-- /SERVICE ITEM --> 
-      <!-- SERVICE ITEM --> 
-      <li class="service-item scroll-animated"> <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-2" aria-expanded="false">Marketing</button> 
-       <!-- COLLAPSE CONTENT --> 
-       <div class="collapse" id="collapse-item-2"> 
-        <!-- COLLAPSE CONTENT INNER --> 
-        <div class="well"> 
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis magna ac justo tincidunt, nec rhoncus leo rutrum. Duis mattis, neque id consectetur gravida, ligula massa consequat mi, id ultricies massa mauris eu augue. Donec dictum diam vitae dui iaculis, vitae laoreet sem molestie.</p> 
-        </div> 
-        <!-- /COLLAPSE CONTENT INNER --> 
-       </div> 
-       <!-- /COLLAPSE CONTENT --> </li> 
-      <!-- /SERVICE ITEM --> 
-      <!-- SERVICE ITEM --> 
-      <li class="service-item scroll-animated"> <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-3" aria-expanded="false">Analytics</button> 
-       <!-- COLLAPSE CONTENT --> 
-       <div class="collapse" id="collapse-item-3"> 
-        <!-- COLLAPSE CONTENT INNER --> 
-        <div class="well"> 
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis magna ac justo tincidunt, nec rhoncus leo rutrum. Duis mattis, neque id consectetur gravida, ligula massa consequat mi, id ultricies massa mauris eu augue. Donec dictum diam vitae dui iaculis, vitae laoreet sem molestie.</p> 
-        </div> 
-        <!-- /COLLAPSE CONTENT INNER --> 
-       </div> 
-       <!-- /COLLAPSE CONTENT --> </li> 
-      <!-- /SERVICE ITEM --> 
-      <!-- SERVICE ITEM --> 
-      <li class="service-item scroll-animated"> <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#collapse-item-4" aria-expanded="false">UI &amp; UX Design</button> 
-       <!-- COLLAPSE CONTENT --> 
-       <div class="collapse" id="collapse-item-4"> 
-        <!-- COLLAPSE CONTENT INNER --> 
-        <div class="well"> 
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis magna ac justo tincidunt, nec rhoncus leo rutrum. Duis mattis, neque id consectetur gravida, ligula massa consequat mi, id ultricies massa mauris eu augue. Donec dictum diam vitae dui iaculis, vitae laoreet sem molestie.</p> 
-        </div> 
-        <!-- /COLLAPSE CONTENT INNER --> 
-       </div> 
-       <!-- /COLLAPSE CONTENT --> </li> 
-      <!-- /SERVICE ITEM --> 
-     </ul> 
-     <!-- /SERVICE LIST --> 
-    </section> 
-    <!-- /SERVICE --> 
-    <!-- WORK --> 
-    <section id="work"> 
-     <h3 class="headline scroll-animated">Latest Work</h3> 
-     <!-- SHOWCASE --> 
-     <div class="showcase"> 
-      <!-- ITEM --> 
-      <div class="item scroll-animated"> 
-       <!-- LIGHTBOX LINK --> 
-       <a href="#" data-featherlight="#item-1-lightbox"> 
-        <!-- INFO --> 
-        <div class="info"> 
-         <!-- CONTAINER MID --> 
-         <div class="container-mid"> 
-          <h5>Petron</h5> 
-          <p>Web Design</p> 
-         </div> 
-         <!-- /CONTAINER MID --> 
-        </div> 
-        <!-- /INFO --> 
-        <div class="background-image" style="background-image: url(assets/img/work/item-1.jpg)"></div> </a> 
-       <!-- /LIGHTBOX LINK --> 
-       <!-- LIGHTBOX --> 
-       <div id="item-1-lightbox" class="work-lightbox"> 
-        <img class="img-responsive" src="assets/img/work/item-1.jpg" alt="image" /> 
-        <h3>Petron</h3> 
-        <p class="subline">Web Design</p> 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper faucibus eros, quis imperdiet sapien. Nam sodales nec risus nec interdum. Proin lobortis, ex condimentum ultricies eleifend, nisl nunc sollicitudin odio, eget egestas est turpis et metus. In non ligula quis mauris rutrum porta.</p> 
-        <p>Integer scelerisque et orci in maximus. Nullam ac finibus nisi. Sed libero tellus, fringilla in posuere vitae, sollicitudin consectetur odio. Morbi pharetra tortor quis risus hendrerit, ut tincidunt arcu vehicula. Integer consequat lorem nisl, sit amet euismod libero fringilla placerat. Proin semper consequat ultricies. Vivamus condimentum tortor ac quam tristique, eget rhoncus arcu suscipit.</p> 
-       </div> 
-       <!-- /LIGHTBOX --> 
-      </div> 
-      <!-- /ITEM --> 
-      <!-- ITEM --> 
-      <div class="item scroll-animated"> 
-       <!-- LIGHTBOX LINK --> 
-       <a href="#" data-featherlight="#item-2-lightbox"> 
-        <!-- INFO --> 
-        <div class="info"> 
-         <!-- CONTAINER MID --> 
-         <div class="container-mid"> 
-          <h5>Surf 71</h5> 
-          <p>Product Design</p> 
-         </div> 
-         <!-- /CONTAINER MID --> 
-        </div> 
-        <!-- /INFO --> 
-        <div class="background-image" style="background-image: url(assets/img/work/item-2.jpg)"></div> </a> 
-       <!-- /LIGHTBOX LINK --> 
-       <!-- LIGHTBOX --> 
-       <div id="item-2-lightbox" class="work-lightbox"> 
-        <img class="img-responsive" src="assets/img/work/item-2.jpg" alt="image" /> 
-        <h3>Surf 71</h3> 
-        <p class="subline">Product Design</p> 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper faucibus eros, quis imperdiet sapien. Nam sodales nec risus nec interdum. Proin lobortis, ex condimentum ultricies eleifend, nisl nunc sollicitudin odio, eget egestas est turpis et metus. In non ligula quis mauris rutrum porta.</p> 
-        <p>Integer scelerisque et orci in maximus. Nullam ac finibus nisi. Sed libero tellus, fringilla in posuere vitae, sollicitudin consectetur odio. Morbi pharetra tortor quis risus hendrerit, ut tincidunt arcu vehicula. Integer consequat lorem nisl, sit amet euismod libero fringilla placerat. Proin semper consequat ultricies. Vivamus condimentum tortor ac quam tristique, eget rhoncus arcu suscipit.</p> 
-       </div> 
-       <!-- /LIGHTBOX --> 
-      </div> 
-      <!-- /ITEM --> 
-      <!-- ITEM --> 
-      <div class="item scroll-animated"> 
-       <!-- LIGHTBOX LINK --> 
-       <a href="#" data-featherlight="#item-3-lightbox"> 
-        <!-- INFO --> 
-        <div class="info"> 
-         <!-- CONTAINER MID --> 
-         <div class="container-mid"> 
-          <h5>Game Nation</h5> 
-          <p>Marketing</p> 
-         </div> 
-         <!-- /CONTAINER MID --> 
-        </div> 
-        <!-- /INFO --> 
-        <div class="background-image" style="background-image: url(assets/img/work/item-3.jpg)"></div> </a> 
-       <!-- /LIGHTBOX LINK --> 
-       <!-- LIGHTBOX --> 
-       <div id="item-3-lightbox" class="work-lightbox"> 
-        <img class="img-responsive" src="assets/img/work/item-3.jpg" alt="image" /> 
-        <h3>Game Nation</h3> 
-        <p class="subline">Marketing</p> 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper faucibus eros, quis imperdiet sapien. Nam sodales nec risus nec interdum. Proin lobortis, ex condimentum ultricies eleifend, nisl nunc sollicitudin odio, eget egestas est turpis et metus. In non ligula quis mauris rutrum porta.</p> 
-        <p>Integer scelerisque et orci in maximus. Nullam ac finibus nisi. Sed libero tellus, fringilla in posuere vitae, sollicitudin consectetur odio. Morbi pharetra tortor quis risus hendrerit, ut tincidunt arcu vehicula. Integer consequat lorem nisl, sit amet euismod libero fringilla placerat. Proin semper consequat ultricies. Vivamus condimentum tortor ac quam tristique, eget rhoncus arcu suscipit.</p> 
-       </div> 
-       <!-- /LIGHTBOX --> 
-      </div> 
-      <!-- /ITEM --> 
-      <!-- ITEM --> 
-      <div class="item scroll-animated"> 
-       <!-- LIGHTBOX LINK --> 
-       <a href="#" data-featherlight="#item-4-lightbox"> 
-        <!-- INFO --> 
-        <div class="info"> 
-         <!-- CONTAINER MID --> 
-         <div class="container-mid"> 
-          <h5>Cronomax</h5> 
-          <p>UI/UX DESIGN</p> 
-         </div> 
-         <!-- /CONTAINER MID --> 
-        </div> 
-        <!-- /INFO --> 
-        <div class="background-image" style="background-image: url(assets/img/work/item-4.jpg)"></div> </a> 
-       <!-- /LIGHTBOX LINK --> 
-       <!-- LIGHTBOX --> 
-       <div id="item-4-lightbox" class="work-lightbox"> 
-        <img class="img-responsive" src="assets/img/work/item-4.jpg" alt="image" /> 
-        <h3>Cronomax</h3> 
-        <p class="subline">UI/UX DESIGN</p> 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper faucibus eros, quis imperdiet sapien. Nam sodales nec risus nec interdum. Proin lobortis, ex condimentum ultricies eleifend, nisl nunc sollicitudin odio, eget egestas est turpis et metus. In non ligula quis mauris rutrum porta.</p> 
-        <p>Integer scelerisque et orci in maximus. Nullam ac finibus nisi. Sed libero tellus, fringilla in posuere vitae, sollicitudin consectetur odio. Morbi pharetra tortor quis risus hendrerit, ut tincidunt arcu vehicula. Integer consequat lorem nisl, sit amet euismod libero fringilla placerat. Proin semper consequat ultricies. Vivamus condimentum tortor ac quam tristique, eget rhoncus arcu suscipit.</p> 
-       </div> 
-       <!-- /LIGHTBOX --> 
-      </div> 
-      <!-- /ITEM --> 
-     </div> 
-     <!-- /SHOWCASE --> 
-    </section> 
-    <!-- /WORK --> 
-    <!-- CONTACT --> 
-    <section id="contact"> 
-     <h3 class="headline scroll-animated">Contact Me</h3> 
-     <!-- CONTACT FORM --> 
-     <form id="contact-form" action="assets/php/contact.php" method="post"> 
-      <input id="contact-form-name" type="text" name="name" class="form-control scroll-animated" placeholder="* Your Name" /> 
-      <input id="contact-form-email" type="text" name="email" class="form-control scroll-animated" placeholder="* Your Email" /> 
-      <!-- PHANTOM ELEMENT ( HONEYPOT CAPTCHA FOR SECURITY ) --> 
-      <div class="fhp-input"> 
-       <input id="contact-form-company" type="text" name="company" class="form-control" /> 
-      </div> 
-      <!-- /PHANTOM ELEMENT ( HONEYPOT CAPTCHA FOR SECURITY ) --> 
-      <textarea id="contact-form-message" name="message" class="form-control scroll-animated" placeholder="* Your Message"></textarea> 
-      <button type="submit" class="form-control scroll-animated"> Send Message 
-       <div class="circle"> 
-        <i class="fa fa-angle-right" aria-hidden="true"></i>
-        <i class="fa fa-angle-right" aria-hidden="true"></i> 
-       </div> </button> 
-      <div class="success-message"> 
-       <i class="fa fa-check" aria-hidden="true"></i>The Email was Sent Successfully! 
-      </div> 
-     </form> 
-     <!-- /CONTACT FORM --> 
-    </section> 
-    <!-- /CONTACT --> 
     <!-- FOOTER --> 
     <section id="footer"> 
      <!-- SOCIAL ICONS --> 
@@ -288,7 +89,7 @@
       <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i><i class="fa fa-linkedin" aria-hidden="true"></i></a></li> 
      </ul> 
      <!-- /SOCIAL ICONS --> 
-     <p class="scroll-animated"> &copy; 2017 Your Brand | Design Template Foundation - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a> </p> 
+     <p class="scroll-animated"> &copy; yangtongyue </p> 
     </section> 
     <!-- /FOOTER --> 
    </div> 
@@ -298,5 +99,7 @@
   <!-- JAVASCRIPTS --> 
   <script type="text/javascript" src="assets/js/plugins.js"></script> 
   <script type="text/javascript" src="assets/js/main.js"></script>  
+  <script src="https://www.jq22.com/jquery/vue.min.js"></script>
+ <script type="text/javascript" src="assets/js/image.js"></script>	
  </body>
 </html>
