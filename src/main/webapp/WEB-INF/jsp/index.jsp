@@ -25,9 +25,13 @@
   <link rel="stylesheet" href="assets/css/image.css">
   <!-- PRELOADER --> 
   <div class="preloader"> 
-   <div class="spinner"></div> 
+   <div class="spinner">
+   </div> 
   </div> 
   <!-- /PRELOADER --> 
+        <audio  autoplay="autoplay" preload="preload" controls="controls" src="https://hdwpdx-10043661.cos.ap-shanghai.myqcloud.com/Akon%2CColby%20O'Donis%2CKardinal%20Offishall%20-%20Beautiful.mp3">
+   浏览器不支持
+   </audio> 
   <!-- IMAGE CONTAINER --> 
   <div class="image-container"> 
    <div class="background-img"></div> 
@@ -43,7 +47,7 @@
      <div class="container-mid"> 
       <!-- ANIMATION CONTAINER --> 
       <div class="animation-container animation-fade-right" data-animation-delay="0"> 
-       <h1>Yang Tong Yue.</h1> 
+       <h1>Yang Tong Yue.</h1>
       </div> 
       <!-- /ANIMATION CONTAINER --> 
       <!-- ANIMATION CONTAINER --> 
@@ -76,7 +80,7 @@
 			</c:when>
 			<c:when test="${image.type==2}">
 			<audio src="${image.uploadpath }" width="150" height="150" preload="preload" controls="controls">
-				您的浏览器不支持 video 标签。
+				您的浏览器不支持 audio 标签。
 				</audio>
 			</c:when>
 			<c:otherwise>
