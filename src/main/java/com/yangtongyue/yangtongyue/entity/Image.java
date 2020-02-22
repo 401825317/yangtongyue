@@ -24,6 +24,22 @@ public class Image implements Serializable {
 	private String categeryid;
 	private String name;
 	private String uploadpath;
+	private String suffixName;
+	private int type;//0图片,1视频,2音频
+	
+	
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public String getSuffixName() {
+		return suffixName;
+	}
+	public void setSuffixName(String suffixName) {
+		this.suffixName = suffixName;
+	}
 	private long uploadtime;
 	
 	public String getGroupid() {
@@ -77,6 +93,8 @@ public class Image implements Serializable {
 		result = prime * result + ((imageid == null) ? 0 : imageid.hashCode());
 		result = prime * result + lid;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((suffixName == null) ? 0 : suffixName.hashCode());
+		result = prime * result + type;
 		result = prime * result + ((uploadpath == null) ? 0 : uploadpath.hashCode());
 		result = prime * result + (int) (uploadtime ^ (uploadtime >>> 32));
 		return result;
@@ -111,6 +129,13 @@ public class Image implements Serializable {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
+			return false;
+		if (suffixName == null) {
+			if (other.suffixName != null)
+				return false;
+		} else if (!suffixName.equals(other.suffixName))
+			return false;
+		if (type != other.type)
 			return false;
 		if (uploadpath == null) {
 			if (other.uploadpath != null)

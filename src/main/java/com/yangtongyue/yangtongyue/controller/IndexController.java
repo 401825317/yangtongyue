@@ -8,30 +8,39 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
+import com.qcloud.cos.model.ListObjectsRequest;
+import com.qcloud.cos.model.PutObjectRequest;
+import com.qcloud.cos.model.PutObjectResult;
+import com.yangtongyue.yangtongyue.common.qcolud.YTYCOSClient;
 import com.yangtongyue.yangtongyue.entity.Image;
 import com.yangtongyue.yangtongyue.intefaces.ImageRepository;
 
 @Controller
 public class IndexController {
+	private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
+
     @RequestMapping("")
     public String index(HttpServletRequest request){
     	List<Image> r=getImageList();
     	request.setAttribute("list", r);
         return "index";
     }
-    
+	@Autowired
+	public YTYCOSClient  ytycosClient;
     @Autowired
     private ImageRepository imageRepository;
     
@@ -57,11 +66,34 @@ public class IndexController {
          }
          try {
              file.transferTo(dest);
+             // 指定要上传的文件
+     		File localFile = dest;
+     		// 指定要上传到的存储桶
+     		String bucketName = "yangtongyue-1252240258";
+     		// 指定要上传到 COS 上对象键
+     		String key = uploadFileName;
+     		PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, key, localFile);
+     		PutObjectResult putObjectResult = ytycosClient.cosClient.putObject(putObjectRequest);
+     		LOG.info("putObjectResult="+JSON.toJSONString(putObjectResult));
+     		ytycosClient.cosClient.shutdown();
+     		LOG.info(file.getContentType());
              Image i=new Image();
              i.setImageid(uuid);
              i.setName(fileName);
-             i.setUploadpath("upload");
+             i.setUploadpath("https://"+bucketName+".cos.ap-shanghai.myqcloud.com/"+key);
              i.setUploadtime(System.currentTimeMillis());
+             i.setSuffixName(suffixName);
+//             String contentType=ImageUtils.getFileType(suffixName);
+             if(file.getContentType().contains("image/")) {
+            	 i.setType(0);
+             }else if(file.getContentType().contains("video/")) {
+            	 i.setType(1);
+             } else if(file.getContentType().contains("audio/")) {
+            	 i.setType(2);
+             }else {
+            	 i.setType(-1);
+
+             }
              imageRepository.save(i);
          } catch (IOException e) {
              e.printStackTrace();

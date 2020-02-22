@@ -43,7 +43,7 @@
      <div class="container-mid"> 
       <!-- ANIMATION CONTAINER --> 
       <div class="animation-container animation-fade-right" data-animation-delay="0"> 
-       <h1>I’m Ethan Kruger and I design Stuff.</h1> 
+       <h1>Yang Tong Yue.</h1> 
       </div> 
       <!-- /ANIMATION CONTAINER --> 
       <!-- ANIMATION CONTAINER --> 
@@ -61,32 +61,46 @@
     <!-- /INTRO --> 
     <!-- ABOUT --> 
     <section id="about"> 
-     <h3 class="headline scroll-animated">最新图片</h3> 
+     <h3 class="headline scroll-animated">最新集锦</h3> 
      <div class="grid" id="grid">
 		<c:forEach items="${list}" var="image"
 			varStatus="ids">
-			  <photo-card img="${image.uploadpath }/${image.imageid}_${image.name}" link="${image.uploadpath }/${image.imageid}_${image.name}"></photo-card>
+			<c:choose>
+			<c:when test="${image.type==0}">
+				 <photo-card img="${image.uploadpath }" link="${image.uploadpath }"></photo-card>
+			</c:when>
+			<c:when test="${image.type==1}">
+					<video src="${image.uploadpath }" width="150" height="150" preload="preload" controls="controls">
+				您的浏览器不支持 video 标签。
+				</video>
+			</c:when>
+			<c:when test="${image.type==2}">
+			<audio src="${image.uploadpath }" width="150" height="150" preload="preload" controls="controls">
+				您的浏览器不支持 video 标签。
+				</audio>
+			</c:when>
+			<c:otherwise>
+			</c:otherwise>
+		</c:choose>
 		</c:forEach>
-<!--   <photo-card img="assets/img/jq22-1.png" link="#"></photo-card> -->
-<!--   <photo-card img="assets/img/jq22-2.png" link="#"></photo-card> -->
-<!--   <photo-card img="assets/img/jq22-3.png" link="#"></photo-card> -->
-<!--   <photo-card img="assets/img/jq22-4.png" link="#"></photo-card> -->
-<!--   <photo-card img="assets/img/jq22-4.png" link="#"></photo-card> -->
-<!--   <photo-card img="assets/img/jq22-3.png" link="#"></photo-card> -->
-<!--   <photo-card img="assets/img/jq22-2.png" link="#"></photo-card> -->
-<!--   <photo-card img="assets/img/jq22-1.png" link="#"></photo-card> -->
 </div>
      <!-- /CLIENTS --> 
     </section> 
+      <section id="mama">
+           <h3 class="headline scroll-animated">妈妈想对你说的</h3> 
+      </section>
+      <section id="baba">
+         <h3 class="headline scroll-animated">爸爸想对你说的</h3> 
+         </section>
     <!-- /ABOUT --> 
     <!-- FOOTER --> 
     <section id="footer"> 
      <!-- SOCIAL ICONS --> 
      <ul class="social-icons scroll-animated"> 
-      <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-      <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-      <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
-      <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i><i class="fa fa-linkedin" aria-hidden="true"></i></a></li> 
+<!--       <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i><i class="fa fa-facebook" aria-hidden="true"></i></a></li>  -->
+<!--       <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i><i class="fa fa-twitter" aria-hidden="true"></i></a></li>  -->
+<!--       <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>  -->
+<!--       <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>  -->
      </ul> 
      <!-- /SOCIAL ICONS --> 
      <p class="scroll-animated"> &copy; yangtongyue </p> 
