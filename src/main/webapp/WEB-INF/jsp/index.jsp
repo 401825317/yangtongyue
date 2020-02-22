@@ -29,7 +29,7 @@
    </div> 
   </div> 
   <!-- /PRELOADER --> 
-        <audio  autoplay="autoplay" preload="preload" controls="controls" src="https://hdwpdx-10043661.cos.ap-shanghai.myqcloud.com/Akon%2CColby%20O'Donis%2CKardinal%20Offishall%20-%20Beautiful.mp3">
+        <audio  loop="loop" autoplay="autoplay" preload="preload" controls="controls" src="https://hdwpdx-10043661.cos.ap-shanghai.myqcloud.com/Akon%2CColby%20O'Donis%2CKardinal%20Offishall%20-%20Beautiful.mp3">
    浏览器不支持
    </audio> 
   <!-- IMAGE CONTAINER --> 

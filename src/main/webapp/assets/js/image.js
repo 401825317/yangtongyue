@@ -24,9 +24,11 @@ Vue.component("photo-card", {
       const refl = this.$refs.refl;
       card.style.transform = `perspective(500px) scale(1)`;
       refl.style.opacity = 0;
+
     },
 
     move() {
+
       const card = this.$refs.card;
       const refl = this.$refs.refl;
 
