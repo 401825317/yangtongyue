@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Maps;
@@ -17,11 +18,16 @@ public class Consts {
 
 	@Autowired
 	private ConfigRepository config;
+	@Value("${COS_SECRET_ID:}")
 	public  String secretId="";
+	@Value("${COS_SECRET_KEY:}")
 	public  String secretKey ="";
 	
 	@PostConstruct
 	public void init() {
+		if (!secretId.isEmpty() && !secretKey.isEmpty()) {
+			return;
+		}
 		List<Config> configlist=config.findAll();
 		Map<String,Config> m=Maps.newHashMap();
 		for (Config config : configlist) {
