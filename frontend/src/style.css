@@ -1,0 +1,44 @@
+:root {
+  --bg: #faf7f2;
+  --card: #ffffff;
+  --text: #2d2a26;
+  --muted: #8a8178;
+  --accent: #e07a5f;
+  --accent-dark: #c4613f;
+  --line: #ece5db;
+  --radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: var(--accent-dark); text-decoration: none; }
+button, .btn {
+  font: inherit; cursor: pointer; border: none; border-radius: 8px;
+  padding: 8px 16px; background: var(--accent); color: #fff;
+}
+button:hover, .btn:hover { background: var(--accent-dark); }
+button:disabled { opacity: .6; cursor: default; }
+button.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+button.ghost:hover { background: var(--line); }
+button.danger { background: transparent; color: #c0392b; border: 1px solid #f0c8c2; }
+button.danger:hover { background: #fdecea; }
+input, select, textarea {
+  font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px;
+  background: #fff; color: var(--text); width: 100%;
+}
+textarea { resize: vertical; min-height: 90px; }
+label { display: block; font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+.field { margin-bottom: 14px; }
+.card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--line); padding: 20px; }
+.page { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
+.page-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.page-head h2 { margin: 0; }
+.muted { color: var(--muted); }
+.error { color: #c0392b; font-size: 14px; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.empty { text-align: center; padding: 60px 0; color: var(--muted); }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); font-size: 14px; }
+th { color: var(--muted); font-weight: 500; }
